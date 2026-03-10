@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+typedef struct node *NODE;
+
+// Create a new node with given data
+NODE createNodeInCLL(int data) {
+    NODE temp = (NODE) malloc(sizeof(struct node));
+    temp->data = data;
+    temp->next = NULL;
+    return temp;
+}
+
+// Create CLL with n nodes
+NODE createCLL(  int n     ) {
+	
+// write your code here...
+ NODE first=NULL, last=NULL, newnode;
+    int x;
+
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&x);
+        newnode=(NODE)malloc(sizeof(struct node));
+        newnode->data=x;
+
+        if(first==NULL)
+        {
+            first=last=newnode;
+            newnode->next=first;
+        }
+        else
+        {
+            newnode->next=first;
+            last->next=newnode;
+            last=newnode;
+        }
+    }
+    return first;
+
+
+}
+
+// Traverse CLL
+void traverseListInCLL(   NODE first   ) {
+
+// write your code here...
+  NODE temp=first;
+
+    do{
+        printf("%d -> ",temp->data);
+        temp=temp->next;
+    }while(temp!=first);
+
+    printf("\n");
+
+}
+
+// Insert at given position in CLL
+NODE insertAtPositionInCLL(   NODE first,int pos,int x      ) {
+	
+//write your code here..
+ NODE newnode,temp=first,prev;
